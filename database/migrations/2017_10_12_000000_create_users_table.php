@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
 
             $table->index('roleId');
 
-            $table->foreign('roleId')->references('id')->on('roles')->onUpdate('cascade');;
+            $table->foreign('roleId')->references('id')->on('roles')->onUpdate('cascade');
         });
     }
 

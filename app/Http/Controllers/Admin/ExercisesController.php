@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Core\Models\Exercise;
 use App\Core\Services\ExerciseService;
 use App\Core\Services\Upload\VideoUploader;
 use App\Http\Requests\ExerciseRequest;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ExercisesController extends Controller

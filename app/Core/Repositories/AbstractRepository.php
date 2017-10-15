@@ -13,23 +13,37 @@ abstract class AbstractRepository implements Repository
         $this->model = $model;
     }
 
-    public function get($select = '*', $where = false, $take = false, $paginate = false)
+    public function get($select = '*', $where = [], $take = false, $paginate = false)
     {
-        return $this->model->get();
+        $query = $this->model->select($select);
+
+        if(!empty($where)) {
+            $query = $query->where($where);
+        }
+
+        return $query->get();
     }
 
-    public function one($field = '', $where = false, $select = '*')
+    public function one($select = '*', $where = [])
     {
         $query = $this->model->select($select);
 
         if($where) {
-            $query->where($field, $where);
+            $query = $query->where($where);
         }
 
-        echo "<pre>";
-        print_r($query);
-        echo "<pre>";
-        //return $query->first();
+        return $query->first();
+    }
+
+    public function column($column, $where = [])
+    {
+        $query = $this->model;
+
+        if(!empty($where)) {
+            $query = $query->where($where);
+        }
+
+        return $query->pluck($column)->all();
     }
 
     public function save(Model $model)

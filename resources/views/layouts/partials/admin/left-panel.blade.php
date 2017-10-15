@@ -13,7 +13,11 @@
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                @if(Auth::check())
+                    <h2>{{Auth::user()->name}}</h2>
+                @endif
+
+
             </div>
         </div>
         <!-- /menu profile quick info -->
@@ -34,7 +38,10 @@
                         <a href="{{route('exercises.index')}}"><i class="fa fa-clone"></i> Упражнения</a>
                     </li>
                     <li>
-                        <a href="{{route('home')}}"><i class="fa fa-desktop"></i> Еда</a>
+                        <a href="{{route('clients.index')}}"><i class="fa fa-desktop"></i> Клиенты</a>
+                    </li>
+                    <li>
+                        <a href="{{route('coaches.index')}}"><i class="fa fa-desktop"></i> Тренеры</a>
                     </li>
                     {{--<li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">

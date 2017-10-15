@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Core\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'roleId'
     ];
 
     /**
@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAccessToAdminPanel()
+    {
+        return $this->roleId <= 2;
+    }
+
+    public function changePassword($password)
+    {
+        $this->password = bcrypt($password);
+    }
 }
