@@ -27,6 +27,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'clientId');
+    }
+
+    public function scopeWithProfile($query)
+    {
+        return $query->with('profile');
+    }
+
     public function isAccessToAdminPanel()
     {
         return $this->roleId <= 2;

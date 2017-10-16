@@ -20,6 +20,6 @@ class ClientService
     {
         $role = $this->roleRepository->column('id', ['name' => 'client']);
 
-        return $this->userRepository->get('*', ['roleId' => $role[0]]);
+        return $this->userRepository->getClientsWithProfile(['roleId' => $role[0]]);
     }
 }

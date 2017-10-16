@@ -13,4 +13,9 @@ class UserRepository extends AbstractRepository
 
         parent::__construct($model);
     }
+
+    public function getClientsWithProfile($where)
+    {
+        return $this->model->where($where)->withProfile()->get();
+    }
 }
