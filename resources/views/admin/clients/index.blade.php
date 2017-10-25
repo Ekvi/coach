@@ -24,17 +24,17 @@
                         </thead>
 
                         <tbody>
-                        @foreach($clients as $clients)
+                        @foreach($clients as $client)
                             <tr class="table-center">
-                                <td>{{$clients->profile->name ?? ''}}</td>
-                                <td>{{$clients->profile->gender ?? ''}}</td>
-                                <td>{{$clients->profile->age ?? ''}}</td>
+                                <td>{{$client->profile->name ?? ''}}</td>
+                                <td>{{$client->profile->gender ?? ''}}</td>
+                                <td>{{$client->profile->age ?? ''}}</td>
                                 <td></td>
                                 <td class="table-centred">
                                     <a href="" role="button"><i class="fa fa-futbol-o fa-2x"></i></a>
                                 </td>
                                 <td class="table-centred">
-                                    <a href="" role="button"><i class="fa fa-glass fa-2x"></i></a>
+                                    <a href="/admin/clients/{{$client->id}}/food" role="button"><i class="fa fa-glass fa-2x"></i></a>
                                 </td>
                             </tr>
                         @endforeach

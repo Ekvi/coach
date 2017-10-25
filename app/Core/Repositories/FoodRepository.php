@@ -12,4 +12,13 @@ class FoodRepository extends AbstractRepository
 
         parent::__construct($model);
     }
+
+    public function getByClientIdWithIndexBy($clientId)
+    {
+        //$this->model->find()->where(['clientId' => $clientId])->indexBy('day')->asArray()->all();
+        return $this->model->where(['clientId' => $clientId])->get()->keyBy('day');//->getDictionary();
+
+        //dd($data);
+        //return $this->model->find()->where(['clientId' => $clientId])->indexBy('day')->asArray()->all();
+    }
 }

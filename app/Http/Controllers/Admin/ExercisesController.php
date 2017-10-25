@@ -71,7 +71,6 @@ class ExercisesController extends Controller
         return view('admin.exercises.edit', compact('exercise'));
     }
 
-
     public function update(ExerciseRequest $request, $id)
     {
         $filename= '';
