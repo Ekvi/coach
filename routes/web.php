@@ -14,8 +14,11 @@ Route::group(['prefix' => 'admin'], function () {
     //Route::resource('foods', 'Admin\FoodsController');
     Route::get('clients/{clientId}/food', 'Admin\FoodsController@index')->where('clientId', '\d+')->name('food');
     Route::get('clients/{clientId}/food/{day}/edit', 'Admin\FoodsController@edit')->name('edit.food');
-    Route::put('clients/{clientId}/food/{day}', 'Admin\FoodsController@update');//->name('update.food');
-    //Route::get('create', 'Admin\FoodsController@create');
+    Route::put('clients/{clientId}/food/{day}', 'Admin\FoodsController@update');
+
+    Route::get('clients/{clientId}/trainings', 'Admin\TrainingController@index')->where('clientId', '\d+')->name('trainings');
+    Route::get('clients/{clientId}/trainings/{day}/edit', 'Admin\TrainingController@edit')->name('edit.trainings');
+
 
     Route::resource('clients', 'Admin\ClientsController');
     Route::resource('coaches', 'Admin\User\CoachesController');

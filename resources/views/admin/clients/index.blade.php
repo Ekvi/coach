@@ -31,7 +31,7 @@
                                 <td>{{$client->profile->age ?? ''}}</td>
                                 <td></td>
                                 <td class="table-centred">
-                                    <a href="" role="button"><i class="fa fa-futbol-o fa-2x"></i></a>
+                                    <a href="/admin/clients/{{$client->id}}/trainings" role="button"><i class="fa fa-futbol-o fa-2x"></i></a>
                                 </td>
                                 <td class="table-centred">
                                     <a href="/admin/clients/{{$client->id}}/food" role="button"><i class="fa fa-glass fa-2x"></i></a>

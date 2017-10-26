@@ -46,4 +46,19 @@ class User extends Authenticatable
     {
         $this->password = bcrypt($password);
     }
+
+    public static function createClient($deviceId, $email): self
+    {
+        $client = new self();
+
+        $client->roleId = 3;
+        $client->deviceId = $deviceId;
+        $client->email = $email;
+        $client->name = '';
+        $client->password = bcrypt('111111');
+        $client->remember_token = str_random(30);
+        $client->accessToken = str_random(60);
+
+        return $client;
+    }
 }

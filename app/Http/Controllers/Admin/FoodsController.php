@@ -37,20 +37,6 @@ class FoodsController extends Controller
 
     public function update(EditFoodRequest $request, $clientId, $day)
     {
-        /*$filename= '';
-
-        if($request->hasFile('video')) {
-            $filename = $this->videoUploader->upload($request->file('video'));
-        }
-
-        $this->exerciseService->updateExercise($id, $request->title, $request->description, $filename);
-
-        return redirect()->route('exercises.index');*/
-
-        /*echo $clientId . "\n";
-        echo $day . "\n";
-        dd($request);*/
-
         $this->foodService->updateOrCreate($clientId, $day, $request->input('content'));
 
         return redirect()->route('food', ['clientId' => $clientId]);
