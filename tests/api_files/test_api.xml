@@ -1,0 +1,52 @@
+<RestClientRequest>
+  <option name="biscuits">
+    <list>
+      <Biscuit>
+        <option name="date" value="1509186045000" />
+        <option name="domain" value="coach.dev" />
+        <option name="name" value="XSRF-TOKEN" />
+        <option name="path" value="/" />
+        <option name="value" value="eyJpdiI6ImJWYmpuVFlKdzFxNWxrdVh2Nk1iNGc9PSIsInZhbHVlIjoib2FZc2E2bGloVkc0WTJFbWorU1FkUWl6d1QxeGhzY1wvd25CUExxQXAxYXRnd1ZOeUZhV1lQdVFEbWxvZWl1a0Q4Y29JSStHakRITmJcL0dCRUdtVnlVQT09IiwibWFjIjoiNGI2ZmZjNDMzZmE5NDc3MDg1ZWZmOTU4MGE0OTM5MDZiN2MxZjExNWEzMTcyMzMyYzAyMmIyOTQyNGNiMjdmZiJ9" />
+      </Biscuit>
+      <Biscuit>
+        <option name="date" value="1509186045000" />
+        <option name="domain" value="coach.dev" />
+        <option name="name" value="laravel_session" />
+        <option name="path" value="/" />
+        <option name="value" value="eyJpdiI6IjBlNkwrZWpXZW9LeUdEY01NbVdLZGc9PSIsInZhbHVlIjoiMHMyUjZsdkdlbTlYbFArdlQ5WWlWMlVyQ01JY3V5TVVcLyt4MnkwaU11MWN3ZUxUbElvUzJsQkk3M3VwRFoxWHlGckwraWMwZ2VHcFRPVzFXRVY1MU53PT0iLCJtYWMiOiI1OWE3ODM0ZTI0YThkYjBmMDI4MjlhMWRiMDQ4N2I0MmZhYmI2ZjZhYTVkMjExYjM2ZGYwNzcxYTBmZDVhODYxIn0%3D" />
+      </Biscuit>
+    </list>
+  </option>
+  <option name="httpMethod" value="GET" />
+  <option name="urlBase" value="http://coach.dev" />
+  <option name="urlPath" value="/api/v1/client/test" />
+  <option name="headers">
+    <list>
+      <KeyValuePair>
+        <option name="key" value="Accept" />
+        <option name="value" value="application/json" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Cache-Control" />
+        <option name="value" value="no-cache" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Content-Type" />
+        <option name="value" value="application/json" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Authorization" />
+        <option name="value" value="Bearer G1yv2BAB5ivVcKKcrjjwi8ys444pkJI1mHhGBvc0SBEAg4QyyOOJ38Xep3g" />
+      </KeyValuePair>
+    </list>
+  </option>
+  <option name="parameters">
+    <list />
+  </option>
+  <option name="parametersEnabled" value="true" />
+  <option name="haveTextToSend" value="false" />
+  <option name="haveFileToSend" value="false" />
+  <option name="isFileUpload" value="false" />
+  <option name="textToSend" value="{&quot;deviceId&quot;: &quot;testId2&quot;, &quot;email&quot;: &quot;test_api2@test.com&quot;}" />
+  <option name="filesToSend" value="" />
+</RestClientRequest>

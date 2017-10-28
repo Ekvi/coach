@@ -32,16 +32,27 @@ class ClientService
 
         $client = null;
 
-        DB::transaction(function() use ($deviceId, $email) {
+        DB::beginTransaction();
+
+        try {
             $client = User::createClient($deviceId, $email);
             $this->userRepository->save($client);
+        } catch(\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
 
+        try {
             $profile = Profile::createDefault($client->id);
             $this->profileRepository->save($profile);
-        });
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
 
-        print_r($client);
-        //return $client;
+        DB::commit();
+
+        return $client;
     }
 
     public function getClient($deviceId)

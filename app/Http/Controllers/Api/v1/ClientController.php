@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Core\Services\User\ClientService;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use App\Http\Requests\CreateClientRequest;
 
 class ClientController extends Controller
 {
@@ -29,10 +27,8 @@ class ClientController extends Controller
         echo 'api test';
     }
 
-    public function create(Request $request)
+    public function create(CreateClientRequest $request)
     {
-        //echo 'api create';
-
         $data = $request->json()->all();
         /*Log::debug($data);
         Log::info($data);
