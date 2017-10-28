@@ -18,8 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'v1'], function () {
-    Route::get('client', 'Api\v1\ClientController@index');
+    //Route::get('client', 'Api\v1\ClientController@index');
     Route::post('client/create', 'Api\v1\ClientController@create');
+
+    Route::group(['middleware' => 'auth:api'], function () {
+        Route::get('client', 'Api\v1\ClientController@index');
+        Route::get('client/test', 'Api\v1\ClientController@test');
+    });
 });
 
 Route::get('test',function(){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Core\Services\User\ClientService;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -14,9 +15,16 @@ class ClientController extends Controller
     public function __construct(ClientService $clientService)
     {
         $this->clientService = $clientService;
+
+        //Guard::auth();
     }
 
     public function index()
+    {
+        echo 'api index';
+    }
+
+    public function test()
     {
         echo 'api test';
     }
