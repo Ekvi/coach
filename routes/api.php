@@ -24,6 +24,8 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('client', 'Api\v1\ClientController@index');
         Route::get('client/test', 'Api\v1\ClientController@test');
+
+        Route::get('client/{clientId}/foods', 'Api\v1\FoodsController@getByClientId')->where('clientId', '\d+');
     });
 });
 
