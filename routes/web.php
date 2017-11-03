@@ -3,13 +3,31 @@
 
 Auth::routes();
 
-Route::get('/', 'Admin\HomeController@index')->name('home');
+//Route::get('/', 'Admin\HomeController@index')->name('admin.home');
+/*Route::group(['middleware' => 'accessToAdminPanel'], function () {
+    Route::get('/', 'Admin\HomeController@index')->name('admin.home');
+});*/
+//Route::get('/', 'Admin\HomeController@index')->name('admin.home');
 
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'accessToAdminPanel'], function () {
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', 'Admin\HomeController@index')->name('home');
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+
+    Route::get('/', 'Admin\HomeController@index')->middleware(['auth', 'accessToAdminPanel'])->name('admin.home'); //need to access only logged
+
+    /*Route::group(['middleware' => 'accessToAdminPanel'], function () {
+        //Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+        //Route::get('/home', 'Admin\HomeController@index')->name('admin.home');
+        Route::get('/', 'Admin\HomeController@index')->middleware('auth')->name('admin.home');
+    });*/
+
+    //Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');//->middleware('accessToAdminPanel');
+    //Route::get('/', 'Admin\HomeController@index')->name('admin.home');//->middleware('accessToAdminPanel');
+
     Route::resource('exercises', 'Admin\ExercisesController');
     //Route::resource('foods', 'Admin\FoodsController');
     Route::get('clients/{clientId}/food', 'Admin\FoodsController@index')->where('clientId', '\d+')->name('food');

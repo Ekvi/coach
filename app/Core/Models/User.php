@@ -37,7 +37,7 @@ class User extends Authenticatable
         return $query->with('profile');
     }
 
-    public function isAccessToAdminPanel()
+    public function hasAccessToAdminPanel()
     {
         return $this->roleId <= 2;
     }

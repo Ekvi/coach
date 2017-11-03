@@ -9,10 +9,10 @@ class AccessToAdminPanel
 {
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->isAccessToAdminPanel()) {
+        if(Auth::check() && Auth::user()->hasAccessToAdminPanel()) {
             return $next($request);
         }
 
-        return redirect('login');
+        return redirect()->route('admin.login')->withErrors(['password' => 'Доступ запрещён.']);
     }
 }
