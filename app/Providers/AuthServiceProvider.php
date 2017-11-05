@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
-use App\Core\Models\User;
+use App\Core\Models\Food;
+use App\Core\Policies\FoodPolicy;
 use App\Http\Guards\TokenGuard;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
+
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -17,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        Food::class => FoodPolicy::class,
     ];
 
     /**

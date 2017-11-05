@@ -18,6 +18,8 @@ class FoodsController extends Controller
 
     public function index($clientId)
     {
+        $this->authorize('hasAccess', Food::class);
+
         $foods = $this->foodService->getFoods($clientId);
 
         return view('admin.foods.index', compact('foods', 'clientId'));
@@ -25,6 +27,8 @@ class FoodsController extends Controller
 
     public function edit($clientId, $day)
     {
+        $this->authorize('hasAccess', Food::class);
+
         $food = $this->foodService->getFood($clientId, $day);
 
         if(empty($food)) {
