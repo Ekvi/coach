@@ -28,20 +28,24 @@ Route::group(['prefix' => 'admin'], function () {
     //Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');//->middleware('accessToAdminPanel');
     //Route::get('/', 'Admin\HomeController@index')->name('admin.home');//->middleware('accessToAdminPanel');
 
-    Route::resource('exercises', 'Admin\ExercisesController');
-    //Route::resource('foods', 'Admin\FoodsController');
-    Route::get('clients/{clientId}/food', 'Admin\FoodsController@index')->where('clientId', '\d+')->name('food');
-    Route::get('clients/{clientId}/food/{day}/edit', 'Admin\FoodsController@edit')->name('edit.food');
-    Route::put('clients/{clientId}/food/{day}', 'Admin\FoodsController@update');
+    Route::middleware(['auth', 'accessToAdminPanel'])->group(function () {
+        Route::resource('clients', 'Admin\ClientsController');
 
-    Route::get('clients/{clientId}/trainings', 'Admin\TrainingController@index')->where('clientId', '\d+')->name('trainings');
-    Route::get('clients/{clientId}/trainings/{day}/edit', 'Admin\TrainingController@edit')->name('edit.trainings');
+        Route::resource('coaches', 'Admin\User\CoachesController');
+        Route::get('coaches/{id}/password-form', 'Admin\User\CoachesController@passwordForm')->where('id', '\d+');
+        Route::post('coaches/change-password', 'Admin\User\CoachesController@changePassword')->name('change-password');
+
+        Route::get('clients/{clientId}/food', 'Admin\FoodsController@index')->where('clientId', '\d+')->name('food');
+        Route::get('clients/{clientId}/food/{day}/edit', 'Admin\FoodsController@edit')->name('edit.food');
+        Route::put('clients/{clientId}/food/{day}', 'Admin\FoodsController@update');
+
+        Route::get('clients/{clientId}/trainings', 'Admin\TrainingController@index')->where('clientId', '\d+')->name('trainings');
+        Route::get('clients/{clientId}/trainings/{day}/edit', 'Admin\TrainingController@edit')->name('edit.trainings');
+
+        Route::resource('exercises', 'Admin\ExercisesController');
+    });
 
 
-    Route::resource('clients', 'Admin\ClientsController');
-    Route::resource('coaches', 'Admin\User\CoachesController');
-    Route::get('coaches/{id}/password-form', 'Admin\User\CoachesController@passwordForm')->where('id', '\d+');
-    Route::post('coaches/change-password', 'Admin\User\CoachesController@changePassword')->name('change-password');
     /*Route::get('clients', [
         'uses' => 'Admin\ClientsController@index',
         'as' => 'clients'

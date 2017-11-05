@@ -3,9 +3,11 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
@@ -56,6 +58,10 @@ class Handler extends ExceptionHandler
                 return $this->notFoundHttpException();
             }
         }
+
+        /*if($exception instanceof AuthorizationException) {
+            abort(403);
+        }*/
 
         return parent::render($request, $exception);
     }
